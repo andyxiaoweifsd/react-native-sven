@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "./dist/out-tsc",
     "module": "es2015",
     "target": "es6",
     "moduleResolution": "node",
@@ -7,6 +8,7 @@
     "noImplicitAny": false,
     "experimentalDecorators": true,
     "preserveConstEnums": true,
+    "baseUrl": "src",
     "sourceMap": true,
     "watch": false,
     "resolveJsonModule": true,
