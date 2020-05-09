@@ -1,11 +1,10 @@
 /*
- * @Date: 2020-05-09 19:57:28
+ * @Date: 2020-05-09 23:52:38
  * @LastEditors: Save
- * @LastEditTime: 2020-05-09 23:51:51
- * @FilePath: /index.ts
+ * @LastEditTime: 2020-05-09 23:52:44
+ * @FilePath: /index.js
  * @Description: 
  */
-
 import { NativeModules } from 'react-native';
 
 const { RNReactNativeSven } = NativeModules;
