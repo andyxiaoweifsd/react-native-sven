@@ -1,15 +1,15 @@
 /*
  * @Date: 2020-05-09 23:52:38
  * @LastEditors: Save
- * @LastEditTime: 2020-05-09 23:52:44
+ * @LastEditTime: 2020-05-10 00:27:57
  * @FilePath: /index.js
  * @Description: 
  */
-import { NativeModules } from 'react-native';
+// import { NativeModules } from 'react-native';
 
-const { RNReactNativeSven } = NativeModules;
+// const { RNReactNativeSven } = NativeModules;
 
-export default RNReactNativeSven;
+// export default RNReactNativeSven;
 
 export * from './src/lib/base-component'
 export * from './src/lib/base-loading'
