@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-22 18:41:10
  * @LastEditors: Save
- * @LastEditTime: 2020-05-09 20:40:16
+ * @LastEditTime: 2020-05-10 00:34:56
  * @FilePath: /src/lib/base-component/base.tsx
  * @Description: 基类的父类
  */
@@ -109,10 +109,10 @@ class Base<T extends BaseIProps, P = {}> extends Component<T, BaseIState> {
           }
         ]}
       >
-        <Image 
+        {/* <Image 
           source = {require('../../../assets/image/global/Internet_slices/Internet.png')}
           style = {[WidthAndHeight(190, 150), {marginTop: -BarHeight}]}
-        />
+        /> */}
         <Text style = {{color: '#999999', fontSize: 16}}>网络连接异常</Text>
         <TouchableOpacity
           style = {[
