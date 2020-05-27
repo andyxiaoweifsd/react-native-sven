@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-05-09 23:52:38
  * @LastEditors: Save
- * @LastEditTime: 2020-05-10 00:27:57
+ * @LastEditTime: 2020-05-10 02:58:39
  * @FilePath: /index.js
  * @Description: 
  */
@@ -11,5 +11,7 @@
 
 // export default RNReactNativeSven;
 
-export * from './src/lib/base-component'
-export * from './src/lib/base-loading'
+export * from './src/lib'
+export * from './src/api'
+export * from './src/util'
+export * from './src/assets/style'

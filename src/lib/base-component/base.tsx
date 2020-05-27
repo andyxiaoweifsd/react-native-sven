@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-22 18:41:10
  * @LastEditors: Save
- * @LastEditTime: 2020-05-10 00:34:56
+ * @LastEditTime: 2020-05-10 01:30:39
  * @FilePath: /src/lib/base-component/base.tsx
  * @Description: 基类的父类
  */
@@ -11,18 +11,18 @@ import { View, StyleSheet, ActivityIndicator, Text, Image, TouchableOpacity } fr
 import { flex, WidthAndHeight, Padding } from "../../assets/style";
 import { BaseLoading } from "../base-loading";
 import { DEVICE } from "../../util/info";
-import { RouteProp, ParamListBase } from "@react-navigation/native";
+// import { RouteProp, ParamListBase } from "@react-navigation/native";
 
 export interface BaseIState {
   LOAD_STATE?: number,
   loadingFlag?: boolean
 }
-interface route extends RouteProp<ParamListBase, string> {
-  params: any
-}
+// interface route extends RouteProp<ParamListBase, string> {
+//   params: any
+// }
 export interface BaseIProps {
- route: route,
- navigation: any;
+//  route: route,
+//  navigation: any;
 }
 
 class Base<T extends BaseIProps, P = {}> extends Component<T, BaseIState> {
@@ -109,10 +109,10 @@ class Base<T extends BaseIProps, P = {}> extends Component<T, BaseIState> {
           }
         ]}
       >
-        {/* <Image 
-          source = {require('../../../assets/image/global/Internet_slices/Internet.png')}
+        <Image 
+          source = {require('../../assets/image/Internet_slices/Internet.png')}
           style = {[WidthAndHeight(190, 150), {marginTop: -BarHeight}]}
-        /> */}
+        />
         <Text style = {{color: '#999999', fontSize: 16}}>网络连接异常</Text>
         <TouchableOpacity
           style = {[

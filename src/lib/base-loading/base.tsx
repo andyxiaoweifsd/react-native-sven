@@ -1,13 +1,14 @@
 /*
  * @Date: 2020-03-20 18:29:38
  * @LastEditors: Save
- * @LastEditTime: 2020-05-09 20:33:59
+ * @LastEditTime: 2020-05-10 01:47:25
  * @FilePath: /src/lib/base-loading/base.tsx
- * @Description: 自定义项目文件描述
+ * @Description: loading
  */
 import React, { PureComponent } from 'react';
-import { View, Dimensions, ActivityIndicator } from 'react-native';
-let { width, height } = Dimensions.get('window')
+import { View, ActivityIndicator } from 'react-native';
+import { screen } from '../../util/info'
+const { width, height } = screen
 interface IProps {
   size?: any,
   color?: string,
@@ -21,7 +22,7 @@ class BaseLoading extends PureComponent<IProps> {
     super(props)
   }
   render () {
-    let { size = 'large', color = '#000000', flag, msg = '', newHeight = height / 1.5, newWidth = width } = this.props
+    let { size = 'large', color = '#000000', flag, newHeight = height / 1.5, newWidth = width } = this.props
     return flag ? <View style = {{
         position: 'absolute',
         zIndex: 999999,
@@ -30,10 +31,7 @@ class BaseLoading extends PureComponent<IProps> {
         justifyContent: 'center',
         alignItems: 'center',
       }}>
-        {
-          msg === '' ? <ActivityIndicator size={size} color={color}/> :
-          <ActivityIndicator size={size} color={'white'} />
-        }
+        <ActivityIndicator size={size} color={color} />
     </View> : null
   }
 }
