@@ -1,20 +1,20 @@
 /*
  * @Date: 2020-01-14 17:32:10
  * @LastEditors: Save
- * @LastEditTime: 2020-04-10 09:13:48
- * @FilePath: /src/redux/api/axios.cache.ts
+ * @LastEditTime: 2020-05-28 01:36:32
+ * @FilePath: /src/api/axios.cache.ts
  * @Description: 长缓存
  */
 import { SvenAxios, requestConfig, configObj } from './axios'
-import { Storage } from './async.storage'
-const storage = new Storage()
+import { SvenStorage } from './async.storage'
+const storage = new SvenStorage()
 
 export interface wrapDataIprops {
   data: requestConfig,
   timestamp: number
 }
 
-class GlobalAxiosCache extends SvenAxios {
+class SvenAxiosCache extends SvenAxios {
   constructor(
     obj: configObj,
     alertMsg?: string
@@ -34,14 +34,14 @@ class GlobalAxiosCache extends SvenAxios {
       return res
     }) 
   }
-  setCacheUrl(cacheUrl: string): string {
+  async setCacheUrl(cacheUrl: string): Promise<string> {
     return cacheUrl
   }
   async cache(cacheUrl: string, method: string = 'get', data?: any): Promise<requestConfig> {
-    const setCacheUrl = this.setCacheUrl(cacheUrl)
+    const setCacheUrl = await this.setCacheUrl(cacheUrl)
     return storage.getItem(setCacheUrl).then((cacheRef: wrapDataIprops) => {
       if (cacheRef) {
-        if (GlobalAxiosCache.checkTimestampValid(cacheRef.timestamp)) {
+        if (SvenAxiosCache.checkTimestampValid(cacheRef.timestamp)) {
           console.log(`长缓存---${this.alertMsg} ---返回值`, cacheRef.data)
           return cacheRef.data
         } else {
@@ -64,7 +64,7 @@ class GlobalAxiosCache extends SvenAxios {
     }
   }
   async removeUrl(cacheUrl: string) {
-    const NewCacheUrl = this.setCacheUrl(cacheUrl)
+    const NewCacheUrl = await this.setCacheUrl(cacheUrl)
     return new Storage().remove(NewCacheUrl)
   }
   static checkTimestampValid (timestamp: number) {
@@ -79,5 +79,5 @@ class GlobalAxiosCache extends SvenAxios {
   }
 }
 export {
-  GlobalAxiosCache
+  SvenAxiosCache
 }

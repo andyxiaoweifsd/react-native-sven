@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-05-09 20:45:35
  * @LastEditors: Save
- * @LastEditTime: 2020-05-28 00:23:09
+ * @LastEditTime: 2020-05-28 01:28:12
  * @FilePath: /src/lib/base-component/base.component.tsx
  * @Description: 
  */
@@ -17,7 +17,7 @@ import { SvenBase, SvenBaseIState, SvenBaseIProps } from './base';
 
 export interface SvenBaseComponentIState extends SvenBaseIState {}
 export interface SvenBaseComponentIProps extends SvenBaseIProps {}
-class BaseComponent<T extends SvenBaseComponentIProps, S extends SvenBaseComponentIState> extends SvenBase<T, S> {
+class SvenBaseComponent<T extends SvenBaseComponentIProps, S extends SvenBaseComponentIState> extends SvenBase<T, S> {
   readonly state: S = {
     ...this.state
   }
@@ -27,5 +27,5 @@ class BaseComponent<T extends SvenBaseComponentIProps, S extends SvenBaseCompone
 }
 
 export {
-  BaseComponent
+  SvenBaseComponent
 }

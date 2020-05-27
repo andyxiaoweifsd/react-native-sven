@@ -1,13 +1,13 @@
 /*
  * @Date: 2019-12-03 19:38:25
  * @LastEditors: Save
- * @LastEditTime: 2020-05-10 02:41:36
+ * @LastEditTime: 2020-05-28 01:37:44
  * @FilePath: /src/api/async.storage.ts
  * @Description: 本地缓存
  */
 import AsyncStorage from '@react-native-community/async-storage'
 
-class Storage {
+class SvenStorage {
   // 添加存储
   async setItem (key: string, value: any) {
     try {
@@ -75,4 +75,4 @@ class Storage {
     }
   }
 }
-export { Storage }
+export { SvenStorage }

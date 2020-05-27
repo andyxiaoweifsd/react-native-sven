@@ -1,10 +1,11 @@
 /*
- * @Date: 2020-05-09 23:52:38
+ * @Date: 2020-05-28 01:40:29
  * @LastEditors: Save
- * @LastEditTime: 2020-05-10 02:58:39
- * @FilePath: /index.js
+ * @LastEditTime: 2020-05-28 01:40:48
+ * @FilePath: /index.ts
  * @Description: 
- */
+ */ 
+
 // import { NativeModules } from 'react-native';
 
 // const { RNReactNativeSven } = NativeModules;
@@ -14,4 +15,4 @@
 export * from './src/lib'
 export * from './src/api'
 export * from './src/util'
-export * from './src/assets/style'
+export * as SvenStyle from './src/assets/style'
