@@ -5,8 +5,8 @@
  * @FilePath: /src/lib/base-loading/index.ts
  * @Description: 
  */
-import { BaseLoading } from './base'
+import { SvenBaseLoading } from './base'
 
 export {
-  BaseLoading
+  SvenBaseLoading
 }

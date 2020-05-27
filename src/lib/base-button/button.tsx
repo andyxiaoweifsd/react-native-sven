@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-17 20:29:54
  * @LastEditors: Save
- * @LastEditTime: 2020-05-10 02:55:19
+ * @LastEditTime: 2020-05-27 23:38:49
  * @FilePath: /src/lib/base-button/button.tsx
  * @Description: 按钮
  */
@@ -9,7 +9,7 @@ import React from 'react';
 import { TouchableOpacity, Text, View, ViewStyle, StyleProp } from 'react-native';
 import { flex } from '../../assets/style'
 
-export interface BaseButtonIProps {
+export interface SvenBaseButtonIProps {
   value: string,
   bgColor: string,
   borderColor: string,
@@ -22,7 +22,7 @@ export interface BaseButtonIProps {
   style?: StyleProp<ViewStyle>
 }
 
-const BaseButton = (props: BaseButtonIProps) => {
+const SvenBaseButton = (props: SvenBaseButtonIProps) => {
   let { value, bgColor, borderColor = '#fff', color, height, callBack, borderRadius = 5, fontSize = 17, style } = props
   if(!height) height = 50
   return <TouchableOpacity style = {[
@@ -41,10 +41,10 @@ const BaseButton = (props: BaseButtonIProps) => {
   </TouchableOpacity>
 }
 
-const BaseButtonMax = () => {
+const SvenBaseButtonMax = () => {
   return (
     <View></View>
   )
 }
 
-export { BaseButton, BaseButtonMax }
+export { SvenBaseButton, SvenBaseButtonMax }

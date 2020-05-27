@@ -1,15 +1,15 @@
 import React, { PureComponent, ReactElement, Component } from 'react';
 import { View, TextInput, TouchableOpacity, Text, StyleProp, TextStyle } from 'react-native';
 import { flex, WidthAndHeight, Padding } from '../../assets/style';
-import { Icons } from '../icons';
-import { CellWrap } from './cell'
+import { SvenIcons } from '../icons';
+import { SvenCellWrap } from './cell'
 import { IPropsCellInput } from './type'
 
 
 interface IState {
   value: string
 }
-class CellInput extends PureComponent<IPropsCellInput, IState> {
+class SvenCellInput extends PureComponent<IPropsCellInput, IState> {
   readonly state: IState = {
     value: this.props.value || ''
   }
@@ -33,7 +33,7 @@ class CellInput extends PureComponent<IPropsCellInput, IState> {
       value
     } = this.state
     return (
-      <CellWrap {...this.props}>
+      <SvenCellWrap {...this.props}>
         <View style = {[
           flex.rowBetween,
           flex.alignItemsCenter,
@@ -68,7 +68,7 @@ class CellInput extends PureComponent<IPropsCellInput, IState> {
                   // console.log(this.textInputRef)
                 }}
               >
-                <Icons 
+                <SvenIcons 
                   type = {'Feather'}
                   typeName = {'x-circle'}
                   color = {'#999999'}
@@ -79,7 +79,7 @@ class CellInput extends PureComponent<IPropsCellInput, IState> {
           </View>
           {rightElement}
         </View>
-      </CellWrap>
+      </SvenCellWrap>
     )
   }
 }
@@ -92,7 +92,7 @@ interface IStatePasswordCell {
 interface IPropsPasswordCell extends IPropsCellInput {
 
 }
-class PasswordCellInput extends PureComponent<IPropsPasswordCell, IStatePasswordCell> {
+class SvenPasswordCellInput extends PureComponent<IPropsPasswordCell, IStatePasswordCell> {
   readonly state: IStatePasswordCell = {
     secureTextEntry: true,
     value: ''
@@ -110,21 +110,12 @@ class PasswordCellInput extends PureComponent<IPropsPasswordCell, IStatePassword
             })
           }}
         >
-          {
-            secureTextEntry ? 
-              <Icons 
-                type = {'Entypo'}
-                typeName = {'eye'}
-                size = {20}
-                color = {'#B3B3B3'}
-              /> :
-              <Icons 
-                type = {'Entypo'}
-                typeName = {'eye-with-line'}
-                size = {20}
-                color = {'#B3B3B3'}
-              /> 
-          }
+          <SvenIcons 
+            type = {'Entypo'}
+            typeName = {secureTextEntry ? 'eye' : 'eye-with-line'}
+            size = {20}
+            color = {'#B3B3B3'}
+          />
         </TouchableOpacity>
       )
     } else {
@@ -135,7 +126,7 @@ class PasswordCellInput extends PureComponent<IPropsPasswordCell, IStatePassword
     const { secureTextEntry, value } = this.state
     const { rightElement, placeholder, inputObj, callBackMsg } = this.props
     return (
-      <CellWrap {...this.props}>
+      <SvenCellWrap {...this.props}>
         <View style = {[
           flex.rowBetween,
           flex.alignItemsCenter
@@ -163,7 +154,7 @@ class PasswordCellInput extends PureComponent<IPropsPasswordCell, IStatePassword
           {this._secureFlagIcon(value, secureTextEntry)}
           {rightElement}
         </View>
-      </CellWrap>
+      </SvenCellWrap>
     )
   }
 }
@@ -172,7 +163,7 @@ interface LeftMsgAndInputIprops extends IPropsCellInput {
   leftMsg?: string,
   leftMsgStyle?: StyleProp<TextStyle>,
 }
-class LeftMsgAndInputCell extends PureComponent<LeftMsgAndInputIprops, IState> {
+class SvenLeftMsgAndInputCell extends PureComponent<LeftMsgAndInputIprops, IState> {
   readonly state: IState = {
     value: ''
   }
@@ -182,7 +173,7 @@ class LeftMsgAndInputCell extends PureComponent<LeftMsgAndInputIprops, IState> {
   render() {
     const { placeholder, inputObj, callBackMsg, leftMsg, leftMsgStyle, rightElement } = this.props
     return (
-      <CellWrap {...this.props}>
+      <SvenCellWrap {...this.props}>
         <View
           style = {[
             {
@@ -230,9 +221,9 @@ class LeftMsgAndInputCell extends PureComponent<LeftMsgAndInputIprops, IState> {
             {rightElement}
           </View>
         </View>
-      </CellWrap>
+      </SvenCellWrap>
     )
   }
 }
 
-export { CellInput, PasswordCellInput, LeftMsgAndInputCell }
+export { SvenCellInput, SvenPasswordCellInput, SvenLeftMsgAndInputCell }

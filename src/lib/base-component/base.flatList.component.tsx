@@ -7,19 +7,19 @@
  */
 import React, { Fragment, ReactElement } from 'react';
 import { FlatList, FlatListProps, SectionListProps, StyleProp, ViewStyle, View, Text, SectionList } from 'react-native';
-import { BaseScrollComponent, BaseScrollComponentIState } from './base.scroll.component';
+import { SvenBaseScrollComponent, SvenBaseScrollComponentIState } from './base.scroll.component';
 import { WidthAndHeight, flex } from '../../assets/style';
-import { BaseIProps } from './base';
+import { SvenBaseIProps } from './base';
 
-export interface BaseFlatListComponentIState extends BaseScrollComponentIState {
+export interface BaseFlatListComponentIState extends SvenBaseScrollComponentIState {
   flatList: any[],
   latListStyle?: StyleProp<ViewStyle>,
   EndReachedCount?: number,
   emptyFlag?: boolean
 }
 
-export interface BaseFlatListComponentIProps extends BaseIProps {}
-class BaseFlatListComponent<T extends BaseFlatListComponentIProps, P extends BaseFlatListComponentIState> extends BaseScrollComponent<T, P> {
+export interface BaseFlatListComponentIProps extends SvenBaseIProps {}
+class SvenBaseFlatListComponent<T extends BaseFlatListComponentIProps, P extends BaseFlatListComponentIState> extends SvenBaseScrollComponent<T, P> {
   onEndReachedCalledDuringMomentum: boolean = false
   pageIndex: number = 0
   pageSize: number = 15
@@ -127,7 +127,7 @@ class BaseFlatListComponent<T extends BaseFlatListComponentIProps, P extends Bas
 }
 export interface BaseSectionListComponentIState extends BaseFlatListComponentIState {}
 export interface BaseSectionListComponentIProps extends BaseFlatListComponentIProps {}
-class BaseSectionListComponent<T extends BaseSectionListComponentIProps, P extends BaseSectionListComponentIState> extends BaseFlatListComponent<T, P> {
+class SvenBaseSectionListComponent<T extends BaseSectionListComponentIProps, P extends BaseSectionListComponentIState> extends SvenBaseFlatListComponent<T, P> {
   readonly state: P = {
     ...this.state
   }
@@ -153,6 +153,6 @@ class BaseSectionListComponent<T extends BaseSectionListComponentIProps, P exten
   }
 }
 export {
-  BaseFlatListComponent,
-  BaseSectionListComponent
+  SvenBaseFlatListComponent,
+  SvenBaseSectionListComponent
 }

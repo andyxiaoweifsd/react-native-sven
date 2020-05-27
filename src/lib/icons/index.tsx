@@ -22,7 +22,7 @@ interface IProps {
   color: string,
   icon?: any
 }
-class Icons extends PureComponent<IProps, any> {
+class SvenIcons extends PureComponent<IProps, any> {
   constructor(props: IProps) {
     super(props)
   }
@@ -46,7 +46,7 @@ class Icons extends PureComponent<IProps, any> {
   }
   render() {
     const { type, typeName, size, color, icon } = this.props
-    let IconWrap: any = Icons.iconType(type, icon)
+    let IconWrap: any = SvenIcons.iconType(type, icon)
     return <IconWrap
       name = {typeName}
       size = {size} 
@@ -59,4 +59,4 @@ interface IconProps {
   size: any,
   style: any
 }
-export { Icons }
+export { SvenIcons }

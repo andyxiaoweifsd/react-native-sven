@@ -13,14 +13,14 @@ import { getBottomSpace, getStatusBarHeight, isIphoneX } from 'react-native-ipho
  * 屏幕信息
  */
 const { height, width } =  Dimensions.get('window');
-const screen = {
+const SvenScreen = {
   width : width,
   height : height
 };
 
 const screenDim = Dimensions.get("screen")
 
-const DEVICE = {
+const SVENDEVICE = {
   width:width,
   height:height,
   screenWidth: Platform.OS == 'ios'? width : screenDim.width,
@@ -33,6 +33,6 @@ const DEVICE = {
 }
 
 export {
-  screen,
-  DEVICE
+  SvenScreen,
+  SVENDEVICE
 }

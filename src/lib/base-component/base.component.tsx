@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-05-09 20:45:35
  * @LastEditors: Save
- * @LastEditTime: 2020-05-09 20:49:37
+ * @LastEditTime: 2020-05-28 00:23:09
  * @FilePath: /src/lib/base-component/base.component.tsx
  * @Description: 
  */
@@ -13,11 +13,11 @@
  * @Description: 基类
  */
 import React from 'react';
-import { Base, BaseIState, BaseIProps } from './base';
+import { SvenBase, SvenBaseIState, SvenBaseIProps } from './base';
 
-export interface BaseComponentIState extends BaseIState {}
-export interface BaseComponentIProps extends BaseIProps {}
-class BaseComponent<T extends BaseComponentIProps, S extends BaseComponentIState> extends Base<T, S> {
+export interface SvenBaseComponentIState extends SvenBaseIState {}
+export interface SvenBaseComponentIProps extends SvenBaseIProps {}
+class BaseComponent<T extends SvenBaseComponentIProps, S extends SvenBaseComponentIState> extends SvenBase<T, S> {
   readonly state: S = {
     ...this.state
   }

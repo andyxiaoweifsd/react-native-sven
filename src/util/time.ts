@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-23 12:56:52
  * @LastEditors: Save
- * @LastEditTime: 2020-05-10 01:53:18
+ * @LastEditTime: 2020-05-28 00:23:00
  * @FilePath: /src/util/time.ts
  * @Description: 格式化时间戳
  */
@@ -14,7 +14,7 @@
  */
 export const formatDateArr = ['yyyy-MM-dd HH:mm:ss', 'yyyy-MM-dd', 'yyyy/MM/dd', 'MM/dd']
 
-export function FormatTime (dateTime: number, format: string) {
+export function SvenFormatTime (dateTime: number, format: string) {
   let localtime = dateTime // localTime(dateTime)
   let date = new Date(localtime)
   let keep = ''
@@ -54,7 +54,7 @@ function FlagIndex (foramtString: string) {
  * @param time 时间戳格式
  * @param offset 时间偏移量
  */
-export function localTime (time: number, offset: number = 7) {
+export function SvenLocalTime (time: number, offset: number = 7) {
   // 判断时间戳的长度 => 10位数为PHP返回的时间，需要乘以 1000
   if (typeof time === 'number' && time.toString().length === 10) {
     var d = new Date(time * 1000)

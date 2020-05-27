@@ -7,14 +7,14 @@
  */
 import React from 'react';
 import { RefreshControlPropsAndroid, RefreshControl, ScrollView, ScrollViewProps, SafeAreaView, View } from 'react-native';
-import { Base, BaseIState, BaseIProps } from './base';
+import { SvenBase, SvenBaseIState, SvenBaseIProps } from './base';
 import { flex } from '../../assets/style';
-export interface BaseScrollComponentIState extends BaseIState {
+export interface SvenBaseScrollComponentIState extends SvenBaseIState {
   refreshFlag?: boolean
 }
-export interface BaseScrollComponentIProps extends BaseIProps {}
+export interface SvenBaseScrollComponentIProps extends SvenBaseIProps {}
 
-class BaseScrollComponent<T extends BaseScrollComponentIProps, S extends BaseScrollComponentIState> extends Base<T, S> {
+class SvenBaseScrollComponent<T extends SvenBaseScrollComponentIProps, S extends SvenBaseScrollComponentIState> extends SvenBase<T, S> {
   scrollViewProps: ScrollViewProps | undefined // scrollview 配置项
   refreshFlag: boolean = false // 是否开启下拉刷新功能
   refreshObj: RefreshControlPropsAndroid | undefined // 下拉刷新的配置
@@ -63,5 +63,5 @@ class BaseScrollComponent<T extends BaseScrollComponentIProps, S extends BaseScr
 }
 
 export {
-  BaseScrollComponent
+  SvenBaseScrollComponent
 }

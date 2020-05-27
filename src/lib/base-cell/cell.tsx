@@ -9,10 +9,10 @@ import React, { PureComponent } from 'react';
 import { View, Text, TouchableOpacity, StyleProp, TextStyle, ImageSourcePropType, ImageStyle } from 'react-native';
 import { IPropsCellWrap } from './type'
 import { Padding, link, flex, WidthAndHeight } from '../../assets/style';
-import { Icons } from '../icons';
+import { SvenIcons } from '../icons';
 import { CachedImage } from '../base-image-cache';
 
-class CellWrap<T extends IPropsCellWrap, P> extends PureComponent<T, any> {
+class SvenCellWrap<T extends IPropsCellWrap, P> extends PureComponent<T, any> {
   constructor(props: T) {
     super(props)
   }
@@ -71,10 +71,10 @@ interface CellIprops extends IPropsCellWrap {
   rightMsgStyle?: StyleProp<TextStyle>
 }
 
-const Cell = (props: CellIprops) => {
+const SvenCell = (props: CellIprops) => {
   let { customFlag = false, customElement, children, leftMsg, leftMsgStyle, rightMsg, rightMsgStyle } = props
   return (
-    <CellWrap {...props}>
+    <SvenCellWrap {...props}>
       <View 
         style = {[
           {
@@ -93,22 +93,22 @@ const Cell = (props: CellIprops) => {
           {rightElementFunc(customFlag, customElement)}
         </View>
       </View>
-    </CellWrap>
+    </SvenCellWrap>
   )
 }
 
 interface TapCellIprops extends CellIprops {
   callBack: () => void
 }
-const TapCell = (props: TapCellIprops) => {
+const SvenTapCell = (props: TapCellIprops) => {
   let { customFlag = true, callBack, children } = props
   return (
     <TouchableOpacity
       onPress = {callBack}
     >
-      <Cell {...props} customFlag = {customFlag}>
+      <SvenCell {...props} customFlag = {customFlag}>
         {children}
-      </Cell>
+      </SvenCell>
     </TouchableOpacity>
   )
 }
@@ -117,7 +117,7 @@ interface TapCellIconIprops extends TapCellIprops {
   iconUrl: () => ImageSourcePropType,
   Wh?: StyleProp<ImageStyle>
 }
-const TapCellIcon = (props: TapCellIconIprops) => {
+const SvenTapCellIcon = (props: TapCellIconIprops) => {
   const { callBack, WrapHeight = 44, iconUrl, Wh = {}, customFlag = true, wrapStyle = {paddingLeft: 0, paddingRight: 5} } = props
   return (
     <TouchableOpacity style = {[{height: WrapHeight}, flex.row]}
@@ -135,7 +135,7 @@ const TapCellIcon = (props: TapCellIconIprops) => {
         />
       </View>
       <View style = {flex.flex}>
-        <Cell 
+        <SvenCell 
           {...props} 
           customFlag = {customFlag} 
           wrapStyle = {wrapStyle}
@@ -151,7 +151,7 @@ export function rightElementFunc(customFlag: boolean, children?: React.ReactNode
     <View style = {{marginTop: 2}}>
     {
       customFlag ? 
-      <Icons 
+      <SvenIcons 
         type = {'Feather'}
         typeName = {'chevron-right'}
         color = {'#999999'}
@@ -163,8 +163,8 @@ export function rightElementFunc(customFlag: boolean, children?: React.ReactNode
 }
 
 export {
-  CellWrap,
-  Cell,
-  TapCell,
-  TapCellIcon
+  SvenCellWrap,
+  SvenCell,
+  SvenTapCell,
+  SvenTapCellIcon
 }

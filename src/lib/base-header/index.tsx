@@ -8,9 +8,9 @@
 import React, { PureComponent, ReactElement, ReactNode } from 'react';
 import { View, StyleProp, TextStyle, ViewStyle, Text, TouchableOpacity } from 'react-native';
 import { WidthAndHeight, flex } from '../../assets/style';
-import { DEVICE } from '../../util/info';
-const startHeight = DEVICE.StatusBarHeight || 0
-import { Icons } from '../icons';
+import { SVENDEVICE } from '../../util/info';
+const startHeight = SVENDEVICE.StatusBarHeight || 0
+import { SvenIcons } from '../icons';
 
 interface IPropsHeader {
   leftElement?: ReactNode,
@@ -22,7 +22,7 @@ interface IPropsHeader {
   headerStyle?: StyleProp<ViewStyle>,
   underline?: boolean
 }
-class Header extends PureComponent<IPropsHeader, any> {
+class SvenHeader extends PureComponent<IPropsHeader, any> {
   constructor(props: IPropsHeader) {
     super(props)
   }
@@ -42,7 +42,7 @@ class Header extends PureComponent<IPropsHeader, any> {
           ]}
           onPress = {this.tapLeftGoBack}
         >
-        <Icons 
+        <SvenIcons 
           type = {'Feather'}
           typeName = {'chevron-left'}
           color = {enterIconColor}
@@ -143,4 +143,4 @@ class Header extends PureComponent<IPropsHeader, any> {
     )
   }
 }
-export { Header }
+export { SvenHeader }

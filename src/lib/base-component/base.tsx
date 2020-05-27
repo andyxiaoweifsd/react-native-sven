@@ -1,7 +1,7 @@
 /*
  * @Date: 2020-03-22 18:41:10
  * @LastEditors: Save
- * @LastEditTime: 2020-05-10 01:30:39
+ * @LastEditTime: 2020-05-28 00:23:19
  * @FilePath: /src/lib/base-component/base.tsx
  * @Description: 基类的父类
  */
@@ -9,23 +9,23 @@
 import React, { Component } from "react";
 import { View, StyleSheet, ActivityIndicator, Text, Image, TouchableOpacity } from "react-native";
 import { flex, WidthAndHeight, Padding } from "../../assets/style";
-import { BaseLoading } from "../base-loading";
-import { DEVICE } from "../../util/info";
+import { SvenBaseLoading } from "../base-loading";
+import { SVENDEVICE } from "../../util/info";
 // import { RouteProp, ParamListBase } from "@react-navigation/native";
 
-export interface BaseIState {
+export interface SvenBaseIState {
   LOAD_STATE?: number,
   loadingFlag?: boolean
 }
 // interface route extends RouteProp<ParamListBase, string> {
 //   params: any
 // }
-export interface BaseIProps {
+export interface SvenBaseIProps {
 //  route: route,
 //  navigation: any;
 }
 
-class Base<T extends BaseIProps, P = {}> extends Component<T, BaseIState> {
+class SvenBase<T extends SvenBaseIProps, P = {}> extends Component<T, SvenBaseIState> {
   bgColor: string = '#F5F6FA'
   SetEntwork: any
   LOAD_RUN: number = 0 // 加载中
@@ -33,7 +33,7 @@ class Base<T extends BaseIProps, P = {}> extends Component<T, BaseIState> {
   LOAD_NETWORK: number = 3 // 网络异常
   LOAD_ODD: number = 4 // 加载完成后页面异常或者因为页面数据到账崩溃
 
-  readonly state: BaseIState = {
+  readonly state: SvenBaseIState = {
     LOAD_STATE: this.LOAD_RUN,
     loadingFlag: false
   }
@@ -98,7 +98,7 @@ class Base<T extends BaseIProps, P = {}> extends Component<T, BaseIState> {
 
   // 网络异常
   renderNetwork() {
-    let BarHeight = DEVICE.StatusBarHeight = 20 + 44 + 50
+    let BarHeight = SVENDEVICE.StatusBarHeight = 20 + 44 + 50
     return (
       <View 
         style = {[
@@ -179,7 +179,7 @@ class Base<T extends BaseIProps, P = {}> extends Component<T, BaseIState> {
         <View style = {{flex: 1}}>
           {this.renderLoadStateComponents()}
           {this.renderSibling()}
-          <BaseLoading flag = {loadingFlag} />
+          <SvenBaseLoading flag = {loadingFlag} />
         </View>
         {this.renderOther()}
       </View>
@@ -197,5 +197,5 @@ const styles = StyleSheet.create({
 })
 
 export {
-  Base
+  SvenBase
 }

@@ -7,8 +7,8 @@
  */
 import React, { PureComponent } from 'react';
 import { View, ActivityIndicator } from 'react-native';
-import { screen } from '../../util/info'
-const { width, height } = screen
+import { SvenScreen } from '../../util/info'
+const { width, height } = SvenScreen
 interface IProps {
   size?: any,
   color?: string,
@@ -17,7 +17,7 @@ interface IProps {
   newHeight?: number,
   newWidth?: number
 }
-class BaseLoading extends PureComponent<IProps> {
+class SvenBaseLoading extends PureComponent<IProps> {
   constructor (props: IProps) {
     super(props)
   }
@@ -37,5 +37,5 @@ class BaseLoading extends PureComponent<IProps> {
 }
 
 export {
-  BaseLoading
+  SvenBaseLoading
 }
