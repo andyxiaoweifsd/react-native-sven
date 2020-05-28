@@ -1,22 +1,22 @@
 /*
  * @Date: 2020-01-14 17:32:10
  * @LastEditors: Save
- * @LastEditTime: 2020-05-28 01:36:32
+ * @LastEditTime: 2020-05-28 02:01:20
  * @FilePath: /src/api/axios.cache.ts
  * @Description: 长缓存
  */
-import { SvenAxios, requestConfig, configObj } from './axios'
+import { SvenAxios, SvenRequestConfig, SvenConfigObj } from './axios'
 import { SvenStorage } from './async.storage'
 const storage = new SvenStorage()
 
 export interface wrapDataIprops {
-  data: requestConfig,
+  data: SvenRequestConfig,
   timestamp: number
 }
 
 class SvenAxiosCache extends SvenAxios {
   constructor(
-    obj: configObj,
+    obj: SvenConfigObj,
     alertMsg?: string
   ) {
     super(
@@ -27,7 +27,7 @@ class SvenAxiosCache extends SvenAxios {
 
   async axios(cacheUrl: string, method: string, data?: any) {
     const that: any = this
-    return that[method](data).then((res: requestConfig) => {
+    return that[method](data).then((res: SvenRequestConfig) => {
       if (res.status === '1') {
         storage.setItem(cacheUrl, this._wrapData(res))
       }
@@ -37,7 +37,7 @@ class SvenAxiosCache extends SvenAxios {
   async setCacheUrl(cacheUrl: string): Promise<string> {
     return cacheUrl
   }
-  async cache(cacheUrl: string, method: string = 'get', data?: any): Promise<requestConfig> {
+  async cache(cacheUrl: string, method: string = 'get', data?: any): Promise<SvenRequestConfig> {
     const setCacheUrl = await this.setCacheUrl(cacheUrl)
     return storage.getItem(setCacheUrl).then((cacheRef: wrapDataIprops) => {
       if (cacheRef) {
@@ -57,7 +57,7 @@ class SvenAxiosCache extends SvenAxios {
     return hours
   }
 
-  _wrapData(data: requestConfig) {
+  _wrapData(data: SvenRequestConfig) {
     return {
       data: data,
       timestamp: new Date().getTime()

@@ -1,35 +1,44 @@
 /*
  * @Date: 2019-12-13 16:17:06
  * @LastEditors: Save
- * @LastEditTime: 2020-05-27 18:25:18
+ * @LastEditTime: 2020-05-28 10:13:04
  * @FilePath: /src/api/axios.ts
  * @Description: axios 请求文件
  */
 
 import axios, { AxiosRequestConfig, AxiosError } from 'axios'
 
-export interface configObj extends AxiosRequestConfig {
+export interface SvenConfigObj extends AxiosRequestConfig {
   url: string,
   headers?: any,
   data?: {
     [pageName: string]: any
+  },
+  params?: {
+    [pageName: string]: any
   }
 }
-export interface requestConfig {
+export interface SvenRequestConfig {
   code: string,
   data: any,
   info: string,
   status: string
 }
+
 export interface GlobarAxiosIprops {
-  obj: configObj
+  obj: SvenConfigObj
   alertMsg: string
 }
+
+interface configIProps {
+  data?: any,
+  params?: any
+}
 class SvenAxios {
-  obj: configObj
+  obj: SvenConfigObj
   alertMsg: string
   constructor (
-    obj: configObj,
+    obj: SvenConfigObj,
     alertMsg?: string,
   ) {
     this.obj = this.config(obj)
@@ -48,15 +57,10 @@ class SvenAxios {
     }
     return data
   }
-  
-  // 添加新的 header
-  static async HeaderConfig(res: configObj): Promise<configObj> {
-    return res
-  }
 
-  async _axios(config: AxiosRequestConfig): Promise<requestConfig> {
+  async _axios(config: AxiosRequestConfig): Promise<SvenRequestConfig> {
     try {
-      const res: requestConfig | any = await axios(config)
+      const res: SvenRequestConfig | any = await axios(config)
       console.log(`Axios---${this.alertMsg}---返回的结果：`, res.data)
       return res.data
     } catch (err) {
@@ -65,43 +69,42 @@ class SvenAxios {
     }
   }
 
-  svenError(err: AxiosError) {
-    console.log('Network', err)
-    return err
-  }
-
-  async mergeConfig (method = 'get', data: any): Promise<requestConfig> {
+  async mergeConfig (method = 'get', data: any): Promise<SvenRequestConfig> {
     let res = {
       ...this.obj,
       method: method,
       ...data
     }
-    res = await SvenAxios.HeaderConfig(res)
+    res = await this.HeaderConfig(res)
     console.log(`${method}---${this.alertMsg}---请求的配置项：`, res)
     return await this._axios(res);
   }
 
-  async post(data: any = ''): Promise<requestConfig> {
+  async post(data: any = ''): Promise<SvenRequestConfig> {
     return this.mergeConfig('post', {data:data});
   }
-  async get(data: any = ''): Promise<requestConfig> {
+  async get(data: any = ''): Promise<SvenRequestConfig> {
     return this.mergeConfig('get', {params:data});
   }
-  async put(data: any = ''): Promise<requestConfig> {
+  async put(data: any = ''): Promise<SvenRequestConfig> {
     return this.mergeConfig('put', {data: data});
   }
-  async delete (data: any = '', flag = 1): Promise<requestConfig> {
+  async delete (data: any = '', flag = 1): Promise<SvenRequestConfig> {
     let config:configIProps = {};
      flag === 1
       ?  config['data'] =  data
       :  config['params'] =  data;
     return this.mergeConfig('delete', config);
   }
-}
 
-interface configIProps {
-  data?: any,
-  params?: any
+  // 添加新的 header
+  async HeaderConfig(res: SvenConfigObj): Promise<SvenConfigObj> {
+    return res
+  }
+  
+  svenError(err: AxiosError) {
+    return err
+  }
 }
 
 export { SvenAxios }
