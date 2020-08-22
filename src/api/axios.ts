@@ -1,7 +1,7 @@
 /*
  * @Date: 2019-12-13 16:17:06
  * @LastEditors: Save
- * @LastEditTime: 2020-05-28 10:13:04
+ * @LastEditTime: 2020-05-28 10:56:55
  * @FilePath: /src/api/axios.ts
  * @Description: axios 请求文件
  */
@@ -62,6 +62,7 @@ class SvenAxios {
     try {
       const res: SvenRequestConfig | any = await axios(config)
       console.log(`Axios---${this.alertMsg}---返回的结果：`, res.data)
+      this.svenFinish(res)
       return res.data
     } catch (err) {
       this.svenError(err)
@@ -101,6 +102,8 @@ class SvenAxios {
   async HeaderConfig(res: SvenConfigObj): Promise<SvenConfigObj> {
     return res
   }
+
+  svenFinish(res: SvenRequestConfig): void {}
   
   svenError(err: AxiosError) {
     return err
